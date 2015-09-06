@@ -1,16 +1,15 @@
 using System;
-delegate void mydel(int z);
-class P
+delegate void del(int n);
+class pro
 {
-     static void show(int b)
+    static void show(int a)
     {
-        Console.Write(b);
+        Console.Write(a);
     }
     static void Main()
     {
-        mydel obj;
-        obj= new mydel(show);
-        obj(9);
+        del o = new del(show);
+        o(55);
         Console.ReadLine();
     }
 }
