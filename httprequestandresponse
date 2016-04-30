@@ -1,0 +1,19 @@
+protected void Page_Load(object sender, EventArgs e)
+        {
+            if(!IsPostBack)
+            {
+            WebClient w = new WebClient();                //webclient request
+           Stream l = w.OpenRead("http://localhost:50865/api/Default/4");
+            StreamReader rd = new StreamReader(l);
+            var v = rd.ReadLine();
+             Response.Write(v);
+            }
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            HttpWebRequest wr = (HttpWebRequest)WebRequest.Create("http://localhost:50865/api/Default/"+TextBox1.Text);//webrequest
+            HttpWebResponse wrr = (HttpWebResponse)wr.GetResponse();//webresponse
+            StreamReader sr = new StreamReader(wrr.GetResponseStream());
+           var v = sr.ReadLine();
+            Response.Write(v);
+        }
